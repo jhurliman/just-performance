@@ -1,6 +1,6 @@
 {
   "name": "just-performance",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "description": "Isomorphic ponyfill wrapping native browser performance and node.js perf_hooks performance",
   "license": "MIT",
   "main": "./dist/cjs/node.js",
@@ -36,15 +36,21 @@
   "files": [
     "dist",
     "src",
-    "!**/*.tsbuildinfo"
+    "!**/*.tsbuildinfo",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "prepack": "tsc -p tsconfig.browser.esm.json && tsc -p tsconfig.node.cjs.json && tsc -p tsconfig.node.esm.json && node ./create-package-json.js",
-    "test": "node --test test/*.test.cjs"
+    "test": "node --test test/*.test.cjs",
+    "prepublishOnly": "npm test"
   },
   "devDependencies": {
-    "@types/node": "15.0.1",
-    "typescript": "4.2.2"
+    "esbuild": "^0.28.2",
+    "playwright": "^1.63.0",
+    "typescript": "^7.0.2"
   },
-  "types": "./dist/cjs/node.d.ts"
+  "types": "./dist/cjs/node.d.ts",
+  "dependencies": {
+    "@types/node": "^24.13.4"
+  }
 }

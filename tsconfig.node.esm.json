@@ -6,6 +6,7 @@
   "compilerOptions": {
     "outDir": "./dist/esm",
     "lib": ["esnext"],
-    "module": "esnext"
+    "module": "esnext",
+    "types": ["node"]
   }
 }

@@ -6,6 +6,8 @@
   "compilerOptions": {
     "outDir": "./dist/cjs",
     "lib": ["esnext"],
-    "module": "commonjs"
+    "module": "node16",
+    "moduleResolution": "node16",
+    "types": ["node"]
   }
 }
