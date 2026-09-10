@@ -9,10 +9,19 @@
   "exports": {
     ".": {
       "node": {
-        "import": "./dist/esm/node.js",
-        "require": "./dist/cjs/node.js"
+        "import": {
+          "types": "./dist/esm/node.d.ts",
+          "default": "./dist/esm/node.js"
+        },
+        "require": {
+          "types": "./dist/cjs/node.d.ts",
+          "default": "./dist/cjs/node.js"
+        }
       },
-      "default": "./dist/esm/browser.js"
+      "default": {
+        "types": "./dist/esm/browser.d.ts",
+        "default": "./dist/esm/browser.js"
+      }
     }
   },
   "repository": {
@@ -26,13 +35,16 @@
   "homepage": "https://github.com/jhurliman/just-performance",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.tsbuildinfo"
   ],
   "scripts": {
-    "prepack": "tsc -p tsconfig.browser.esm.json && tsc -p tsconfig.node.cjs.json && tsc -p tsconfig.node.esm.json && node ./create-package-json.js"
+    "prepack": "tsc -p tsconfig.browser.esm.json && tsc -p tsconfig.node.cjs.json && tsc -p tsconfig.node.esm.json && node ./create-package-json.js",
+    "test": "node --test test/*.test.cjs"
   },
   "devDependencies": {
     "@types/node": "15.0.1",
     "typescript": "4.2.2"
-  }
+  },
+  "types": "./dist/cjs/node.d.ts"
 }
