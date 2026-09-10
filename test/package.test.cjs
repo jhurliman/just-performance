@@ -22,7 +22,7 @@ test('packed package supports CommonJS, ESM and browser fallback', async () => {
     const tsc = path.join(root, 'node_modules/typescript/bin/tsc');
     const nodeSource = "import {performance} from 'just-performance'; const n: number = performance.now(); const origin: number = performance.timeOrigin;";
     for (const ext of ['cts', 'mts']) fs.writeFileSync(path.join(dir, 'node.' + ext), nodeSource);
-    execFileSync(process.execPath, [tsc, '--strict', '--noEmit', '--module', 'nodenext', '--moduleResolution', 'nodenext', '--target', 'es2022', '--typeRoots', path.join(root,'node_modules/@types'), '--types', 'node', 'node.cts', 'node.mts'], {cwd:dir,stdio:'pipe'});
+    execFileSync(process.execPath, [tsc, '--strict', '--noEmit', '--module', 'nodenext', '--moduleResolution', 'nodenext', '--target', 'es2022', 'node.cts', 'node.mts'], {cwd:dir,stdio:'pipe'});
     fs.writeFileSync(path.join(dir,'browser.ts'), "import {performance} from 'just-performance'; const p: Performance = performance;\n// @ts-expect-error the browser declaration does not expose Node-only fields\nperformance.nodeTiming;\n");
     fs.writeFileSync(path.join(dir,'tsconfig.json'), JSON.stringify({compilerOptions:{strict:true,noEmit:true,module:'esnext',moduleResolution:'bundler',lib:['es2022','dom'],types:[]},files:['browser.ts']}));
     execFileSync(process.execPath,[tsc,'-p','tsconfig.json'],{cwd:dir,stdio:'pipe'});
