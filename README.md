@@ -12,7 +12,7 @@
 npm install just-performance
 ```
 
-The examples describe the 4.4.1 preparation branch. See [CHANGELOG.md](CHANGELOG.md) for packaging and compatibility changes.
+See [CHANGELOG.md](CHANGELOG.md) for packaging and compatibility changes.
 
 ## Time an operation
 
