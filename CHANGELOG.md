@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.4.1 (release candidate)
+## 4.4.1 — 2026-09-10
 
 - Exclude TypeScript build caches from npm archives and declare matching runtime/type entrypoints.
 - Upgrade the build to TypeScript 7 with current module-resolution settings and separate Node/browser ambient types.
